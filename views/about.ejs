@@ -1,0 +1,85 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container">
+	<h1 class="display-4">About Site</h1>
+	<p>
+		I made this site as part of the Colt Steele Web Developer Bootcamp. This is not the original version Colt made and has been modififed and updated to make it better in terms of styling and functionality. The app is called YelpCamp and provides full <mark>CRUD (Create Read Update Destroy)</mark> functionality to create and post information about camping grounds across the world. The app also contains full <strong>authentication</strong> and <strong>authorization</strong>. It also features some extent of security from attacks (discussed below). One of the key features of the app is geocoding using the Mapbox API. Read ahead to look deeper into the website and all the technologies and packages used to create it.  
+	</p>
+	<h1 class="display-4 mt-3">Technologies</h1>
+	<div class="row">
+		<div class="col-md-4 mb-3">
+			<ul class="list-group">
+			  <li class="list-group-item">HTML, CSS, JavaScript</li>
+			  <li class="list-group-item">Express</li>
+			  <li class="list-group-item">MongoDB</li>
+			  <li class="list-group-item">Mongoose</li>
+			  <li class="list-group-item">Bootstrap</li>
+			  <li class="list-group-item">EJS</li>
+			  <li class="list-group-item active">These are all major technologies used to create yelpcamp. Node packages are not included in this list.</li>
+			</ul>
+		</div>
+		<div class="col-md-4">
+			<h3>HTML, CSS, JavaScript</h3>
+			<p>HTML (Hyper-Text Markup Language), CSS (Cascading Style Sheets) and JavaScript is necessary to build any webpage. The app uses dynamic HTML (skip to EJS to read more) and some custom styles. JavaScript is used to do basically everything throughout the app. CSS is used for styling certain elements while Javascript is used for all the logic and also used with EJS while rendering pages.</p>
+			<ul class="list">
+				<li class="list-item"><a href="https://en.wikipedia.org/wiki/HTML">HTML</a></li>
+				<li class="list-item"><a href="https://en.wikipedia.org/wiki/CSS">CSS</a></li>
+				<li class="list-item"><a href="https://en.wikipedia.org/wiki/Javascript">JS</a></li>
+			</ul>
+		</div>
+		<div class="col-md-4">
+			<h3>Express</h3>
+			<p>Express.js, or simply Express, is a back end web application framework for Node.js. Express is a package but its used so extensively and is basically the heart of the backend. Express was used to build the server of YelpCamp. The server features express router and controller functionality (Model–view–controller). Express with the help of mongoose talks with the databse and is also essential in rendering dynamic HTML.</p>
+			<ul class="list">
+				<li class="list-item"><a href="https://en.wikipedia.org/wiki/Express.js">Express</a></li>
+				<li class="list-item"><a href="https://expressjs.com/">Express Docs</a></li>
+			</ul>
+		</div>
+		<div class="col-md-4">
+			<h3>MongoDB and Mongoose</h3>
+				<p>MongoDB is a source-available cross-platform document-oriented database program. It's a no SQL database, the deployed version of the app uses Atlas (also mongo) for its database. YelpCamp uses 3 collections in the database - Users, Campgrounds and Reviews. These are connected via relationships. Mongoose helps integrate MongoDB with the Express.</p>
+			<ul class="list">
+				<li class="list-item"><a href="https://www.mongodb.com/">MongoDB Docs</a>
+				<li class="list-item"><a href="https://mongoosejs.com/">Mongoose Docs</a>
+			</ul>
+		</div>
+		<div class="col-md-4">
+			<h3>Bootstrap</h3>
+				<p>Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. Its is the main source of styling for the website. Bootsrap gives components with styles applied to them to directly use inside your code so you dont have to worry about writing hundreds of lines of CSS. Its also the most popular CSS framework out there.</p>
+			<ul class="list">
+				<li class="list-item"><a href="https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)">Bootstrap</a></li>
+				<li class="list-item"><a href="https://getbootstrap.com/">Bootstrap Docs</a></li>
+			</ul>
+		</div>
+		<div class="col-md-4">
+			<h3>EJS</h3>
+				<p>EJS or Embedded JavaScript is a simple templating language that lets you generate HTML markup with plain JavaScript. No reinvention of iteration and control-flow. It's just plain JavaScript. This also helps mix Javascript into HTML to perform logic in Templates and all the pages of the websites were made with EJS. The syntax can be a bit weird but it does the job.</p>
+			<ul class="list">
+				<li class="list-item"><a href="https://www.npmjs.com/package/ejs">EJS</a></li>
+				<li class="list-item"><a href="https://ejs.co/">EJS Docs</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<h1 class="display-4 mt-3">Packages</h1>
+			<div class="list-group mt-3">
+			  <a target="_blank" href="https://www.npmjs.com/package/method-override" class="list-group-item list-group-item-action"><strong>Method Override</strong> - Used to override HTTP verbs </a>
+			  <a target="_blank" href="https://www.npmjs.com/package/path" class="list-group-item list-group-item-action"><strong>Path</strong> - Used to perform functions relating file paths.</a>
+			  <a target="_blank" href="https://www.npmjs.com/package/ejs-mate" class="list-group-item list-group-item-action"><strong>EJS Mate</strong> - Used for Layouts, Partials in template.</a>
+			  <a target="_blank" href="https://www.npmjs.com/package/express-session" class="list-group-item list-group-item-action"><strong>Express Session</strong> - Used to create sessions in express.</a>
+			  <a target="_blank" href="https://www.npmjs.com/package/connect-flash" class="list-group-item list-group-item-action"><strong>Connect Flash</strong> - Used to make flash messages.</a>
+			  <a target="_blank" href="https://www.npmjs.com/package/passport" class="list-group-item list-group-item-action"><strong>Passport</strong> - Used for authentication.</a>
+			  <a target="_blank" href="https://www.npmjs.com/package/mongo-sanitize" class="list-group-item list-group-item-action"><strong>Mongo Sanitize</strong> - Used to prevent query selector injection attacks</a>
+			  <a target="_blank" href="https://www.npmjs.com/package/dotenv" class="list-group-item list-group-item-action"><strong>DotNev</strong> - Used to access environment variables in development</a>
+			  <a target="_blank" href="https://www.npmjs.com/package/@mapbox/mapbox-sdk" class="list-group-item list-group-item-action"><strong>Mapbox</strong> - Used for Geocoding and displaying Maps</a>
+			  <a target="_blank" href="https://www.npmjs.com/package/cloudinary" class="list-group-item list-group-item-action"><strong>Cloudinary</strong> - Used to upload Images.</a>
+			  <a target="_blank" href="https://www.npmjs.com/package/connect-mongo" class="list-group-item list-group-item-action"><strong>Connect Mongo</strong> - Used for mongo session store.</a>
+			  <a target="_blank" href="https://www.npmjs.com/package/joi" class="list-group-item list-group-item-action"><strong>JOI</strong> - Used for client side validations.</a>
+			  <a target="_blank" href="https://www.npmjs.com/package/multer" class="list-group-item list-group-item-action"><strong>Multer</strong> - Used to push imags to cloud.</a>
+			  <a target="_blank" href="https://www.npmjs.com/package/sanitize-html" class="list-group-item list-group-item-action"><strong>Sanitize HTML</strong> - Used to prevent XSS attacks.</a>
+			  <a target="_blank" href="https://www.npmjs.com/package/passport-local" class="list-group-item list-group-item-action"><strong>Passport Local</strong> - Works with passport.</a>
+			  <a target="_blank" href="https://www.heroku.com/" class="list-group-item list-group-item-action"><strong>Heroku</strong> - Used to deploy the site.</a>
+			  <a href="#" class="list-group-item list-group-item-action active">With these packages and some more The website uses a total of 20 packages!!!!!</a>
+			</div>
+	</div>
+</div>
