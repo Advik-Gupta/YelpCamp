@@ -4,10 +4,7 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 
-mongoose.connect("mongodb://localhost:27017/yelp-camp", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect("mongodb://localhost:27017/yelp-camp");
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -24,13 +21,24 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 
 const Campground = require("./models/campground");
+const Review = require("./models/review");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 
-const { campgroundSchema } = require("./validationSchemas.js");
+const { campgroundSchema, reviewSchema } = require("./validationSchemas.js");
 
 const validateCampground = (req, res, next) => {
   const result = campgroundSchema.validate(req.body);
+  if (result.error) {
+    const msg = result.error.details.map((el) => el.message).join(",");
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
+
+const validateReview = (req, res, next) => {
+  const result = reviewSchema.validate(req.body);
   if (result.error) {
     const msg = result.error.details.map((el) => el.message).join(",");
     throw new ExpressError(msg, 400);
@@ -73,7 +81,9 @@ app.post(
 app.get(
   "/campgrounds/:id",
   catchAsync(async (req, res) => {
-    const campground = await Campground.findById(req.params.id);
+    const campground = await Campground.findById(req.params.id).populate(
+      "reviews"
+    );
     res.render("campgrounds/show", { campground });
   })
 );
@@ -104,6 +114,19 @@ app.delete(
     const { id } = req.params;
     await Campground.findByIdAndDelete(id);
     res.redirect("/campgrounds");
+  })
+);
+
+app.post(
+  "/campgrounds/:id/reviews",
+  validateReview,
+  catchAsync(async (req, res) => {
+    const campground = await Campground.findById(req.params.id);
+    const review = new Review(req.body.review);
+    campground.reviews.push(review);
+    await review.save();
+    await campground.save();
+    res.redirect(`/campgrounds/${campground._id}`);
   })
 );
 
